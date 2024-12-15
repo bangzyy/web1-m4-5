@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Data</title>
+    <link rel="stylesheet" href="/Modul4/css/style2.css" />
+    <script>
+      // Validasi form tambah data kamar
+      function validateDataKamar() {
+        const idKamar = document.getElementById("ik").value;
+        const gambar = document.getElementById("img").value;
+        const jenisKamar = document.getElementById("jenis_kamar").value;
+        const hargaKamar = document.getElementById("price_kamar").value;
+        const fasilitasKamar = document.getElementById("fasilitas_kamar").value;
+        if (!idKamar || idKamar <= 0) {
+          alert("Id Kamar harus diisi dengan angka positif.");
+          return false;
+        }if (!gambar) {
+          alert("Gambar ruangan harus diupload.");
+          return false;
+        }if (!jenisKamar) {
+          alert("Jenis kamar harus dipilih.");
+          return false;
+        }if (!hargaKamar || hargaKamar < 100000) {
+          alert("Harga kamar minimal 100.000.");
+          return false;
+        }if (!fasilitasKamar) {
+          alert("Fasilitas kamar harus dipilih.");
+          return false;
+        }
+        return true;
+      }
+      // Validasi form tambah data fasilitas
+      function validateDataFasilitas() {
+        const idFasilitas = document.getElementById("id_fasilitas").value;
+        const namaFasilitas = document.getElementById("nama_fasilitas").value;
+        const fasilitas = document.getElementById("fasilitas").value;
+        const hargaWeekend = document.getElementById("harga_weekend").value;
+        const hargaWeekday = document.getElementById("harga_weekday").value;
+        const kuota = document.getElementById("kuota").value;
+        const jamBuka = document.getElementById("jambuka").value;
+        const jamTutup = document.getElementById("jamtutup").value;
+    if (!idFasilitas || idFasilitas <= 0) {
+          alert("Id Fasilitas harus diisi dengan angka positif.");
+          return false;
+        } if (!namaFasilitas) {
+          alert("Nama fasilitas harus diisi.");
+          return false;
+        }if (!fasilitas) {
+          alert("Fasilitas harus dipilih.");
+          return false;
+        }if (!hargaWeekend || hargaWeekend < 120000) {
+          alert("Harga weekend minimal 120.000.");
+          return false;
+        }if (!hargaWeekday || hargaWeekday < 100000) {
+          alert("Harga weekday minimal 100.000.");
+          return false;
+        }if (!kuota || kuota <= 0) {
+          alert("Kuota harus diisi dengan angka positif.");
+          return false;
+        }if (!jamBuka || !jamTutup) {
+          alert("Jam buka dan jam tutup harus diisi.");
+          return false;
+        }if (jamTutup <= jamBuka) {
+          alert("Jam tutup harus lebih besar dari jam buka.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>FORM TAMBAH DATA</h1>
+    <!-- FORM DATA KAMAR -->
+    <div class="container">
+      <form onsubmit="return validateDataKamar()">
+        <h2>DATA KAMAR</h2>
+        <table>
+          <tr>
+            <td><label for="ik">Id Kamar</label></td>
+            <td>
+              <input type="number" id="ik" name="id_kamar"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="img">Gambar Ruangan</label></td>
+            <td>
+              <input type="file" id="img" name="gambar" accept="image/*"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="jenis_kamar">Jenis Kamar</label></td>
+            <td>
+              <select id="jenis_kamar" name="jenis_kamar">
+                <option value="" selected disabled>--PILIH--</option>
+                <option value="st">Standard</option>
+                <option value="dl">Deluxe</option>
+                <option value="fm">Family</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="price">Harga</label></td>
+            <td>
+              <input type="number" id="price_kamar" name="harga_kamar" min="100000"
+                step="20000" placeholder="START AT 100.000"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="fasilitas_kamar">Fasilitas</label></td>
+            <td>
+              <select id="fasilitas_kamar" name="fasilitas_kamar">
+                <option value="" selected disabled>--PILIH--</option>
+                <option value="kr">Kolam Renang</option>
+                <option value="gym">Gym</option>
+                <option value="bl">Billiard</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <div class="tombol">
+          <button type="submit" class="save">SIMPAN</button>
+          <button type="reset" class="cancel">BATAL</button>
+        </div>
+      </form>
+    </div>
+    <!-- FORM FASILITAS -->
+    <div class="container2">
+      <form onsubmit="return validateDataFasilitas()">
+        <h2>FASILITAS</h2>
+        <table>
+          <tr>
+            <td><label for="id_fasilitas">Id</label></td>
+            <td>
+              <input type="number" id="id_fasilitas" name="id_fasilitas"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="nama_fasilitas">Nama</label></td>
+            <td>
+              <input type="text" id="nama_fasilitas" name="nama_fasilitas"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="fasilitas">Fasilitas</label></td>
+            <td>
+              <select id="fasilitas" name="fasilitas">
+                <option value="" selected disabled>--PILIH--</option>
+                <option value="kr">Kolam Renang</option>
+                <option value="gym">Gym</option>
+                <option value="bl">Billiard</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="harga_weekend">Harga Weekend</label></td>
+            <td>
+              <input type="number" id="harga_weekend" name="harga_weekend" min="120000"
+                step="20000" placeholder="START AT 120.000"  />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="harga_weekday">Harga Weekday</label></td>
+            <td>
+              <input type="number" id="harga_weekday" name="harga_weekday" min="100000"
+                step="20000" placeholder="START AT 100.000"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="kuota">Kuota</label></td>
+            <td>
+              <input type="number" id="kuota" name="kuota"/>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="jambuka">Jam Buka</label></td>
+            <td><input type="time" id="jambuka" name="jam_buka"/></td>
+          </tr>
+          <tr>
+            <td><label for="jamtutup">Jam Tutup</label></td>
+            <td>
+              <input type="time" id="jamtutup" name="jam_tutup"/>
+            </td>
+          </tr>
+        </table>
+        <div class="tombol">
+          <button type="submit" class="save">SIMPAN</button>
+          <button type="reset" class="cancel">BATAL</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

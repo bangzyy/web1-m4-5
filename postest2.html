@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota Penjualan</title>
+    <style>
+        #nota {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            width: 300px;
+        }
+        #nota p {
+            margin: 5px 0;
+        }
+        .garis-bawah {
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        function updateBarang() {
+            const kode = document.querySelector('select[name="kode"]').value;
+            const namaBarangField = document.querySelector('input[name="namaBarang"]');
+            const hargaField = document.querySelector('input[name="harga"]');
+            let namaBarang = "";
+            let harga = 0;
+            if (kode === "B001") {
+                namaBarang = "Buku";
+                harga = 5000;
+            } else if (kode === "B002") {
+                namaBarang = "Penggaris";
+                harga = 1500;
+            } else if (kode === "B003") {
+                namaBarang = "Pulpen";
+                harga = 2000;
+            }
+            namaBarangField.value = namaBarang;
+            hargaField.value = harga;
+            document.querySelector('input[name="jumlahBeli"]').value = 0;
+            document.querySelector('input[name="jumlahBayar"]').value = "";
+            document.querySelector('input[name="potongan"]').value = "";
+            document.querySelector('input[name="totalBayar"]').value = "";
+        }
+        function hitungTotal() {
+            const harga = parseInt(document.querySelector('input[name="harga"]').value) || 0;
+            const jumlahBeli = parseInt(document.querySelector('input[name="jumlahBeli"]').value) || 0;
+            const jumlahBayarField = document.querySelector('input[name="jumlahBayar"]');
+            const potonganField = document.querySelector('input[name="potongan"]');
+            const totalBayarField = document.querySelector('input[name="totalBayar"]');
+            const jumlahBayar = harga * jumlahBeli;
+            jumlahBayarField.value = jumlahBayar;
+            let persenPotongan = 0;
+            if (jumlahBeli > 0 && jumlahBeli <= 10) {
+                persenPotongan = 5;
+            } else if (jumlahBeli >= 11 && jumlahBeli <= 20) {
+                persenPotongan = 10;
+            } else if (jumlahBeli > 20) {
+                persenPotongan = 15;
+            }
+            const potongan = (persenPotongan / 100) * jumlahBayar;
+            potonganField.value = potongan;
+            const totalBayar = jumlahBayar - potongan;
+            totalBayarField.value = totalBayar;
+        }
+        function tampilkanNota() {
+            const kode = document.querySelector('select[name="kode"]').value;
+            const namaBarang = document.querySelector('input[name="namaBarang"]').value;
+            const harga = document.querySelector('input[name="harga"]').value;
+            const jumlahBeli = document.querySelector('input[name="jumlahBeli"]').value;
+            const jumlahBayar = document.querySelector('input[name="jumlahBayar"]').value;
+            const potongan = document.querySelector('input[name="potongan"]').value;
+            const totalBayar = document.querySelector('input[name="totalBayar"]').value;
+            const nota = `
+                <h3>Nota Penjualan</h3>
+                <p>Kode Barang: ${kode}</p>
+                <p>Nama Barang: ${namaBarang}</p>
+                <p>Harga Barang: ${harga}</p>
+                <p>Jumlah Beli: ${jumlahBeli}</p>
+                <p>-----------------------------</p>
+                <p>Jumlah Bayar: ${jumlahBayar}</p>
+                <p>Potongan: ${potongan}</p>
+                <p>=================</p>
+                <p>Total Bayar: ${totalBayar}</p>
+    `;
+    document.getElementById('nota').innerHTML = nota;
+}
+    </script>
+</head>
+<body>
+    <form name="form1">
+        <fieldset>
+            <legend>Data Penjualan Barang</legend>
+            <label for="kode">Kode:</label>
+            <select name="kode" onchange="updateBarang()">
+                <option value="">--Pilih Salah Satu--</option>
+                <option value="B001">B001</option>
+                <option value="B002">B002</option>
+                <option value="B003">B003</option>
+            </select><br><br>
+            <label for="jumlahBeli">Jumlah Beli:</label>
+            <input type="number" name="jumlahBeli" value="0" oninput="hitungTotal()"><br><br>
+            <label for="namaBarang">Nama Barang:</label>
+            <input type="text" name="namaBarang" readonly><br><br>
+            <label for="harga">Harga:</label>
+            <input type="text" name="harga" readonly><br><br>
+            <label for="jumlahBayar">Jumlah Bayar:</label>
+            <input type="text" name="jumlahBayar" readonly><br><br>
+            <label for="potongan">Potongan (%):</label>
+            <input type="text" name="potongan" readonly><br><br>
+            <label for="totalBayar">Total Bayar:</label>
+            <input type="text" name="totalBayar" readonly><br><br>
+            <input type="button" value="TAMPILKAN" onclick="tampilkanNota()">
+        </fieldset>
+    </form>
+    <div id="nota"></div>
+</body>
+</html>

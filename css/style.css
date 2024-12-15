@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 50px; /* Memberi jarak antara judul dan bagian form */
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Supaya elemen-elemen form ditata secara vertikal */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Memberi jarak atas pada form */
+}
+
+table {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding: 30px; /* Mengurangi padding agar tidak terlalu besar */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 10px; /* Menambahkan jarak bawah setelah label */
+    color: #fafafa;
+}
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc; /* Menambahkan border */
+    box-shadow: 0px 2px 4px black;
+    margin-bottom: 15px; /* Memberi jarak bawah antar input */
+    width: 100%; /* Membuat input lebar 100% */
+    box-sizing: border-box; /* Agar lebar termasuk padding */
+}
+
+button {
+    padding: 5px 10px;
+    background-color: black; /* Warna tombol */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Tombol akan memiliki lebar 50% */
+    margin: 0 auto; /* Menempatkan tombol di tengah */
+    font-size: 16px;
+    display: block; /* Menjadikan tombol blok agar bisa di tengah */
+    transition: 0.5s all;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: white; /* Efek hover pada tombol */
+    color: black;
+}

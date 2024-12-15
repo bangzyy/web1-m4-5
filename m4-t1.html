@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forn login</title>
+    <link rel="stylesheet" href="/Modul4/css/style.css">
+    <script>
+        function login(){
+            const cekUsername = "admin"
+            const cekPassword ="123"
+             const username = document.getElementById("username").value
+             const password = document.getElementById("password").value
+             if(username == cekUsername && password == cekPassword){
+                alert("Anda Berhasil Login Sebagai " +cekUsername)
+                window.location.href = "m4-13.html"
+             }else if(username == "" && password == ""){
+                alert("Username Atau Password Tidak Boleh Kosong")
+                window.location.href = "m4-t1.html"
+             }else{
+                 alert("Username Atau Password Salah")
+                window.location.href = "m4-t1.html"
+             }
+        }
+    </script>
+</head>
+<body>
+    <h1>FORM LOGIN</h1>
+    <form id="login">
+        <table border="0">
+            <tr>
+                <td>
+                    <label>Username:</label>
+                </td>
+                <td>
+                    <input type="text" id="username" name="username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password:</label>
+                </td>
+                <td>
+                    <input type="password" id="password" name="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="login()">LOGIN</button>
+                </td>
+            </tr> 
+        </table>
+      
+    </form>
+</body>
+</html>

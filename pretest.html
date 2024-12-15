@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validasi</title>
+</head>
+<body style="display: flex; background-color: #fafafa; font-family: Arial, sans-serif; align-items: center; 
+justify-content: center; height: 100vh; margin: 0;">
+    <form id="loginForm" style="display: flex; flex-direction: column; 
+    color: white; background-color: #333; align-items: center; 
+    justify-content: center; width: 400px; padding: 50px; border-radius: 16px; 
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);">
+        <h1 style="margin-bottom: 20px;">LOGIN FORM</h1>
+        <label for="username" style="display: flex; flex-direction: column; 
+        align-items: flex-start; width: 100%; margin-bottom: 15px;">
+            Username:
+            <input type="text" name="username" id="username" style="border-radius: 14px; 
+            border: none; padding: 8px; box-shadow: 2px 4px 16px black; width: 100%;
+             margin-top: 6px;">
+        </label>
+        <label for="password" style="display: flex; flex-direction: column; 
+        align-items: flex-start; width: 100%; margin-bottom: 15px;">
+            Password:
+            <input type="password" name="password" id="password" style="border-radius: 14px; 
+            border: none; padding: 8px; box-shadow: 2px 4px 16px black; width: 100%;
+             margin-top: 6px;">
+        </label>
+        <button type="submit" style="width: 100%; border-radius: 12px; padding: 10px; border: none; cursor: pointer; 
+        font-weight: bold; background-color: #555; color: white; transition: background-color 0.3s ease;" 
+            onmouseover="this.style.backgroundColor='#777';
+            this.style.color='black';" onmouseout="this.style.backgroundColor='#555';
+            this.style.color='white'; ">Login
+        </button>
+    </form>
+    <script>
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === "" || password === "") {
+                alert("Login Gagal Username dan password harus diisi");
+            } else {
+                alert("Halo, " + username + " Login Berhasil");
+            }
+        });
+    </script>
+</body>
+</html>
